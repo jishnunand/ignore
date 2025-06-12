@@ -1,0 +1,13 @@
+Test Case,Input,Expected Behavior,Result
+1. No Changes Made,"Make no edits and click ""Save""","Error message: ""No changes identified to save. Pl verify if you have completed edits by clicking outside""",⬜ Pass / ⬜ Fail
+2. Only OUTLIER_STATUS filled,"Fill valid OUTLIER_STATUS, leave COMMENT empty","Error: ""A Commentary is required when Outlier Classification is provided""",⬜ Pass / ⬜ Fail
+3. Only COMMENT filled (valid length),"Leave OUTLIER_STATUSempty, enter 100-char COMMENT","Error: ""Outlier Classification is required for adding comment""",⬜ Pass / ⬜ Fail
+4. Only COMMENT filled (invalid length < 20),"Leave OUTLIER_STATUSempty, enter 10-char COMMENT","Show only classification error, not length error",⬜ Pass / ⬜ Fail
+5. Only COMMENT filled (invalid length > 500),"Leave OUTLIER_STATUSempty, enter 600-char COMMENT","Show only classification error, not length error",⬜ Pass / ⬜ Fail
+6. Both fields filled correctly,"Set valid OUTLIER_STATUS, enter 100-char COMMENT",Success; data saved,⬜ Pass / ⬜ Fail
+7. Valid status + empty comment,"Set valid OUTLIER_STATUS, leave COMMENT empty","Error: ""A Commentary is required when Outlier Classification is provided""",⬜ Pass / ⬜ Fail
+8. Valid status + short comment (<20 chars),"Valid status, enter 10-char COMMENT","Error: ""Commentary must be between 20 and 500 characters""",⬜ Pass / ⬜ Fail
+9. Valid status + long comment (>500 chars),"Valid status, enter 600-char COMMENT","Error: ""Commentary must be between 20 and 500 characters""",⬜ Pass / ⬜ Fail
+10. Valid status + boundary comments (20 or 500 chars),Enter exactly 20 or 500 characters,Should pass without errors,⬜ Pass / ⬜ Fail
+11. Row cleared (empty both fields after edit),Add then remove values for both fields,Row should not be sent to backend (not in modifiedRows),⬜ Pass / ⬜ Fail
+"12. Modified multiple rows, some valid, some invalid","Add valid data in 1st row, invalid in 2nd",Only errors for invalid row shown; save prevented,⬜ Pass / ⬜ Fail
